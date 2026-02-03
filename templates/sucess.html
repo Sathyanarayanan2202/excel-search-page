@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Successful</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3a0ca3;
+            --accent-color: #7209b7;
+            --success-color: #2ecc71;
+            --success-dark: #27ae60;
+            --light-bg: #f8f9fa;
+            --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            padding: 20px;
+        }
+        
+        .success-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: var(--card-shadow);
+            overflow: hidden;
+            max-width: 500px;
+            width: 100%;
+            margin: 0 auto;
+            transition: transform 0.3s ease;
+        }
+        
+        .success-container:hover {
+            transform: translateY(-5px);
+        }
+        
+        .success-header {
+            background: linear-gradient(to right, var(--success-color), var(--success-dark));
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        
+        .success-header h2 {
+            margin: 0;
+            font-weight: 700;
+            font-size: 2.2rem;
+        }
+        
+        .success-header p {
+            opacity: 0.9;
+            margin-top: 8px;
+            font-size: 0.95rem;
+        }
+        
+        .success-body {
+            padding: 40px;
+        }
+        
+        .success-icon {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 25px;
+        }
+        
+        .icon-circle {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(to bottom, #d4edda, #c3e6cb);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.4);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(46, 204, 113, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(46, 204, 113, 0);
+            }
+        }
+        
+        .bi-check-circle-fill {
+            color: var(--success-dark);
+            font-size: 48px;
+        }
+        
+        .success-message {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .success-message h3 {
+            color: #212529;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        
+        .success-message p {
+            color: #6c757d;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        
+        .next-options {
+            margin-bottom: 30px;
+        }
+        
+        .next-options h4 {
+            color: #495057;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 1.2rem;
+        }
+        
+        .option-card {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 15px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .option-card:hover {
+            background: white;
+            border-color: var(--primary-color);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .option-card a {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: #212529;
+            width: 100%;
+        }
+        
+        .option-card .option-text {
+            flex: 1;
+        }
+        
+        .option-card .option-icon {
+            color: var(--primary-color);
+            font-size: 20px;
+            transition: transform 0.3s ease;
+        }
+        
+        .option-card:hover .option-icon {
+            transform: translateX(5px);
+        }
+        
+        .option-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+        
+        .option-description {
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+        
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 25px 0;
+            color: #6c757d;
+        }
+        
+        .divider::before,
+        .divider::after {
+            content: "";
+            flex: 1;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .divider span {
+            padding: 0 15px;
+            font-size: 14px;
+        }
+        
+        .quick-actions {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .btn-quick {
+            background: #6c757d;
+            border: none;
+            border-radius: 8px;
+            padding: 8px 16px;
+            font-size: 0.9rem;
+            color: white;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .btn-quick:hover {
+            background: #5a6268;
+            transform: translateY(-2px);
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 576px) {
+            .success-body {
+                padding: 30px 20px;
+            }
+            
+            .success-header {
+                padding: 30px 20px;
+            }
+            
+            body {
+                padding: 15px;
+            }
+            
+            .quick-actions {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .btn-quick {
+                justify-content: center;
+            }
+            
+            .icon-circle {
+                width: 80px;
+                height: 80px;
+            }
+            
+            .bi-check-circle-fill {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-6">
+                <div class="success-container">
+                    <div class="success-header">
+                        <h2>Welcome Back!</h2>
+                        <p>You have successfully logged into your account</p>
+                    </div>
+                    
+                    <div class="success-body">
+                        <div class="success-icon">
+                            <div class="icon-circle">
+                                <i class="bi bi-check-circle-fill"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="success-message">
+                            <h3>Login Successful!</h3>
+                            <p>You are now signed in to your account. What would you like to do next?</p>
+                        </div>
+                        
+                        <div class="next-options">
+                            <h4>Choose Your Next Step</h4>
+                            
+                            <div class="option-card" onclick="window.location.href='dashboard.html'">
+                                <a href="dashboard.html">
+                                    <div class="option-text">
+                                        <div class="option-title">Go to Dashboard</div>
+                                        <div class="option-description">Access your personal dashboard with all features</div>
+                                    </div>
+                                    <div class="option-icon">
+                                        <i class="bi bi-speedometer2"></i>
+                                    </div>
+                                </a>
+                            </div>
+                            
+                            <div class="option-card" onclick="window.location.href='search.html'">
+                                <a href="search.html">
+                                    <div class="option-text">
+                                        <div class="option-title">Search Your Application</div>
+                                        <div class="option-description">Find and manage your applications</div>
+                                    </div>
+                                    <div class="option-icon">
+                                        <i class="bi bi-search"></i>
+                                    </div>
+                                </a>
+                            </div>
+                            
+                            <div class="option-card" onclick="window.location.href='register.html'">
+                                <a href="register.html">
+                                    <div class="option-text">
+                                        <div class="option-title">Register a New Account</div>
+                                        <div class="option-description">Create an account for another user</div>
+                                    </div>
+                                    <div class="option-icon">
+                                        <i class="bi bi-person-plus"></i>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="divider">
+                            <span>Or</span>
+                        </div>
+                        
+                        <div class="text-center">
+                            <p class="text-muted mb-3">Quick Navigation</p>
+                            <div class="quick-actions">
+                                <button class="btn-quick" onclick="window.location.href='index.html'">
+                                    <i class="bi bi-box-arrow-left me-1"></i> Back to Login
+                                </button>
+                                <button class="btn-quick" onclick="window.location.href='profile.html'">
+                                    <i class="bi bi-person-circle me-1"></i> View Profile
+                                </button>
+                                <button class="btn-quick" onclick="window.location.href='settings.html'">
+                                    <i class="bi bi-gear me-1"></i> Settings
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-4">
+                    <p class="text-muted small">
+                        Session will expire in 30 minutes for security. <a href="#" class="text-decoration-none" onclick="extendSession()">Extend session</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Auto redirect to dashboard after 10 seconds
+        let redirectTimer;
+        let timeLeft = 10;
+        
+        function startRedirectTimer() {
+            const timerElement = document.getElementById('redirectTimer');
+            if (timerElement) {
+                timerElement.textContent = timeLeft;
+            }
+            
+            redirectTimer = setInterval(() => {
+                timeLeft--;
+                if (timerElement) {
+                    timerElement.textContent = timeLeft;
+                }
+                
+                if (timeLeft <= 0) {
+                    clearInterval(redirectTimer);
+                    redirectToDashboard();
+                }
+            }, 1000);
+        }
+        
+        function redirectToDashboard() {
+            // In a real application, you would redirect to the dashboard
+            // window.location.href = 'dashboard.html';
+            
+            // For demo, we'll just show an alert
+            const optionCards = document.querySelectorAll('.option-card');
+            optionCards.forEach(card => {
+                card.style.opacity = '0.7';
+            });
+            
+            setTimeout(() => {
+                alert('Auto-redirecting to Dashboard...');
+                // Reset for demo
+                optionCards.forEach(card => {
+                    card.style.opacity = '1';
+                });
+                timeLeft = 10;
+                startRedirectTimer();
+            }, 500);
+        }
+        
+        function extendSession() {
+            // Simulate extending session
+            clearInterval(redirectTimer);
+            timeLeft = 30;
+            startRedirectTimer();
+            
+            // Show notification
+            showNotification('Session extended by 30 minutes');
+        }
+        
+        function showNotification(message) {
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.className = 'alert alert-success alert-dismissible fade show position-fixed';
+            notification.style.top = '20px';
+            notification.style.right = '20px';
+            notification.style.zIndex = '1050';
+            notification.innerHTML = `
+                <i class="bi bi-check-circle me-2"></i>
+                ${message}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Auto remove after 3 seconds
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.remove();
+                }
+            }, 3000);
+        }
+        
+        // Add click effects to option cards
+        document.querySelectorAll('.option-card').forEach(card => {
+            card.addEventListener('click', function() {
+                // Add click animation
+                this.style.transform = 'scale(0.98)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 150);
+            });
+        });
+        
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Start the redirect timer
+            // Uncomment to enable auto-redirect
+            // startRedirectTimer();
+            
+            // Add user greeting based on time of day
+            const hour = new Date().getHours();
+            const greeting = hour < 12 ? 'Good morning' : hour < 18 ? 'Good afternoon' : 'Good evening';
+            document.querySelector('.success-message h3').textContent = `${greeting}! Login Successful`;
+        });
+        
+        // Add keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            // Alt + 1: Go to Dashboard
+            if (e.altKey && e.key === '1') {
+                window.location.href = 'dashboard.html';
+            }
+            // Alt + 2: Search Applications
+            else if (e.altKey && e.key === '2') {
+                window.location.href = 'search.html';
+            }
+            // Alt + 3: Register New Account
+            else if (e.altKey && e.key === '3') {
+                window.location.href = 'register.html';
+            }
+            // Escape: Go back to login
+            else if (e.key === 'Escape') {
+                window.location.href = 'index.html';
+            }
+        });
+    </script>
+</body>
+</html>
