@@ -8,8 +8,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-    <!-- Custom External CSS -->
-     <link rel="stylesheet" href="/assets/css/search.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/assets/css/search.css">
 </head>
 <body>
     <!-- Logout Confirmation Modal -->
@@ -19,7 +19,7 @@
                 <div class="modal-header">
                     <h5 class="modal-title" id="logoutModalLabel">
                         <i class="bi bi-box-arrow-right"></i>
-                        Confirm Logout
+                        <span data-i18n="search.modal.title">Confirm Logout</span>
                     </h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
@@ -28,8 +28,8 @@
                         <div class="mb-3">
                             <i class="bi bi-question-circle" style="font-size: 48px; color: var(--primary-color);"></i>
                         </div>
-                        <h5>Are you sure you want to logout?</h5>
-                        <p class="text-muted">You will be redirected to the login page. Any unsaved changes will be lost.</p>
+                        <h5 data-i18n="search.modal.question">Are you sure you want to logout?</h5>
+                        <p class="text-muted" data-i18n="search.modal.warning">You will be redirected to the login page. Any unsaved changes will be lost.</p>
                     </div>
                     
                     <div class="user-info-card p-3 mb-4" style="background-color: #f8f9fa; border-radius: 10px;">
@@ -38,19 +38,22 @@
                                 <i class="bi bi-person-circle" style="font-size: 40px; color: var(--primary-color);"></i>
                             </div>
                             <div class="flex-grow-1 ms-3">
-                                <h6 class="mb-1" id="currentUserName">Current User</h6>
+                                <h6 class="mb-1" data-i18n="search.modal.currentUser">Current User</h6>
                                 <p class="text-muted small mb-0" id="currentUserEmail">user@example.com</p>
-                                <p class="text-muted small mb-0">Session active since: <span id="sessionTime">Just now</span></p>
+                                <p class="text-muted small mb-0">
+                                    <span data-i18n="search.modal.sessionActive">Session active since:</span>
+                                    <span id="sessionTime">Just now</span>
+                                </p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer justify-content-center">
                     <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
-                        <i class="bi bi-x-circle me-2"></i> Cancel
+                        <i class="bi bi-x-circle me-2"></i> <span data-i18n="search.modal.cancel">Cancel</span>
                     </button>
                     <button type="button" class="btn btn-modal-logout" id="confirmLogout">
-                        <i class="bi bi-box-arrow-right me-2"></i> Yes, Logout
+                        <a href="/templates/index.html" class="logout-btn"><i class="bi bi-box-arrow-right me-2"></i> <span data-i18n="search.modal.confirm">Yes, Logout</span></a>
                     </button>
                 </div>
             </div>
@@ -58,22 +61,35 @@
     </div>
 
     <div class="container">
+        <!-- Language selector row -->
+        <div class="d-flex justify-content-end gap-1 mb-3">
+            <button class="btn btn-sm btn-outline-secondary lang-btn" data-lang="en">English</button>
+            <button class="btn btn-sm btn-outline-secondary lang-btn" data-lang="ta">தமிழ்</button>
+            <button class="btn btn-sm btn-outline-secondary lang-btn" data-lang="te">తెలుగు</button>
+            <button class="btn btn-sm btn-outline-secondary lang-btn" data-lang="hi">हिन्दी</button>
+        </div>
+
+        <!-- Guru and Logo Images (centered, above header) -->
+        <div class="text-center mb-4">
+            <img src="/assets/images/guru-banner.jpg" alt="Guru Image" class="img-fluid rounded mb-4" style="max-width: 350px; display: block; margin-left: auto; margin-right: auto;">
+            <img src="/assets/images/logo.png" alt="VRNT Logo" class="img-fluid rounded mb-4" style="max-width: 250px;display: block; margin-left: auto; margin-right: auto;">
+        </div>
         <!-- Page Header with Logout Button -->
         <div class="header-container">
             <div class="page-header">
                 <h2>
                     <i class="bi bi-search"></i>
-                    Search Application
+                    <span data-i18n="search.pageTitle">Search Application</span>
                 </h2>
                 
                 <div class="header-actions">
                     <button class="btn-user" id="userProfileBtn">
                         <i class="bi bi-person-circle"></i>
-                        <span id="userNameDisplay">Admin User</span>
+                        <span id="userNameDisplay" data-i18n="search.adminUser">Admin User</span>
                     </button>
                     <button class="btn-logout" data-bs-toggle="modal" data-bs-target="#logoutModal">
                         <i class="bi bi-box-arrow-right"></i>
-                        Logout
+                        <span data-i18n="search.logoutBtn">Logout</span>
                     </button>
                 </div>
             </div>
@@ -81,34 +97,34 @@
         
         <!-- Search Form -->
         <div class="search-container">
-            <h3><i class="bi bi-funnel"></i> Search Filters</h3>
+            <h3><i class="bi bi-funnel"></i> <span data-i18n="search.filtersHeading">Search Filters</span></h3>
             <form id="searchForm">
                 <div class="row g-3">
                     <div class="col-md-6">
-                        <label for="role" class="form-label">Role</label>
+                        <label for="role" class="form-label" data-i18n="search.roleLabel">Role</label>
                         <select class="form-select" name="roles" id="role" required>
-                            <option selected disabled value="">Select A Role</option>
-                            <option value="student">Student</option>
-                            <option value="teacher">Teacher</option>
+                            <option selected disabled value="" data-i18n="search.roleDefault">Select A Role</option>
+                            <option value="student" data-i18n="search.roleStudent">Student</option>
+                            <option value="teacher" data-i18n="search.roleTeacher">Teacher</option>
                         </select>
                     </div>
                     
                     <div class="col-md-6">
-                        <label for="uname" class="form-label">Username</label>
+                        <label for="uname" class="form-label" data-i18n="search.usernameLabel">Username</label>
                         <div class="input-group">
                             <span class="input-group-text">
                                 <i class="bi bi-person"></i>
                             </span>
-                            <input type="search" class="form-control" name="username" id="uname" placeholder="Enter username to search">
+                            <input type="search" class="form-control" name="username" id="uname"
+                                   data-i18n-placeholder="search.usernamePlaceholder" placeholder="Enter username to search">
                         </div>
-                        <div class="form-text">Leave blank to search all users</div>
+                        <div class="form-text" data-i18n="search.usernameHelp">Leave blank to search all users</div>
                     </div>
                     
                     <div class="col-12">
                         <div class="d-flex justify-content-end">
                             <button type="submit" class="btn btn-primary btn-search">
-                                <i class="bi bi-search"></i>
-                                Search Applications
+                                <i class="bi bi-search"></i> <span data-i18n="search.searchBtn">Search Applications</span>
                             </button>
                         </div>
                     </div>
@@ -119,7 +135,7 @@
         <!-- Results Container -->
         <div class="result-container">
             <div class="result-header">
-                <h3><i class="bi bi-list-ul"></i> Search Results</h3>
+                <h3><i class="bi bi-list-ul"></i> <span data-i18n="search.resultsHeading">Search Results</span></h3>
                 <div class="result-count" id="resultCount">0 results found</div>
             </div>
             
@@ -127,13 +143,13 @@
                 <table class="result-table" id="resultsTable">
                     <thead>
                         <tr>
-                            <th scope="col">Name</th>
-                            <th>Username</th>
-                            <th>Email</th>
-                            <th>Role</th>
-                            <th>Department</th>
-                            <th>Gender</th>
-                            <th>Actions</th>
+                            <th scope="col" data-i18n="search.thName">Name</th>
+                            <th data-i18n="search.thUsername">Username</th>
+                            <th data-i18n="search.thEmail">Email</th>
+                            <th data-i18n="search.thRole">Role</th>
+                            <th data-i18n="search.thDepartment">Department</th>
+                            <th data-i18n="search.thGender">Gender</th>
+                            <th data-i18n="search.thActions">Actions</th>
                         </tr>
                     </thead>
                     <tbody id="resultsBody">
@@ -146,8 +162,8 @@
                     <div class="empty-icon">
                         <i class="bi bi-search"></i>
                     </div>
-                    <h4>No Search Results</h4>
-                    <p>Enter search criteria above to find applications. You can search by role, username, or both.</p>
+                    <h4 data-i18n="search.emptyTitle">No Search Results</h4>
+                    <p data-i18n="search.emptyMsg">Enter search criteria above to find applications. You can search by role, username, or both.</p>
                 </div>
             </div>
             
@@ -166,13 +182,13 @@
         <div class="text-center mt-4">
             <div class="btn-group" role="group" aria-label="Quick actions">
                 <button type="button" class="btn btn-outline-primary" onclick="clearSearch()">
-                    <i class="bi bi-x-circle me-2"></i> Clear Filters
+                    <i class="bi bi-x-circle me-2"></i> <span data-i18n="search.clearBtn">Clear Filters</span>
                 </button>
                 <button type="button" class="btn btn-outline-success" onclick="exportToCSV()">
-                    <i class="bi bi-download me-2"></i> Export CSV
+                    <i class="bi bi-download me-2"></i> <span data-i18n="search.exportBtn">Export CSV</span>
                 </button>
                 <button type="button" class="btn btn-outline-info" onclick="refreshResults()">
-                    <i class="bi bi-arrow-clockwise me-2"></i> Refresh
+                    <i class="bi bi-arrow-clockwise me-2"></i> <span data-i18n="search.refreshBtn">Refresh</span>
                 </button>
             </div>
         </div>
@@ -180,7 +196,9 @@
 
     <!-- Bootstrap JS Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    
+    <!-- Translation script (shared) -->
+    <script src="/assets/js/translator.js"></script>
+    <!-- Custom search JS -->
     <script src="/assets/js/search.js"></script>
 </body>
 </html>

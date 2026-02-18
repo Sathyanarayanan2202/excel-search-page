@@ -8,17 +8,35 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-    <!-- Custom External CSS -->
-     <link rel="stylesheet" href="/assets/css/register.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/assets/css/register.css">
+    <style>
+        .lang-btn { min-width: 60px; font-weight: 500; border: 1px solid rgba(0,0,0,0.2); }
+        .lang-btn.active { background-color: #ffc107; color: #000 !important; border-color: #ffc107; }
+    </style>
 </head>
 <body>
     <div class="container">
+        <!-- Language selector row -->
+        <div class="row justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-6">
+                <div class="d-flex justify-content-end gap-1 mb-3">
+                    <button class="btn btn-sm btn-outline-secondary lang-btn" data-lang="en">English</button>
+                    <button class="btn btn-sm btn-outline-secondary lang-btn" data-lang="ta">தமிழ்</button>
+                    <button class="btn btn-sm btn-outline-secondary lang-btn" data-lang="te">తెలుగు</button>
+                    <button class="btn btn-sm btn-outline-secondary lang-btn" data-lang="hi">हिन्दी</button>
+                </div>
+            </div>
+        </div>
+
         <div class="row justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-6">
                 <div class="register-container">
                     <div class="register-header">
-                        <h2>Create Account</h2>
-                        <p>Join our community and get started</p>
+                        <img src="/assets/images/guru-banner.jpg" alt="Guru Banner" class="mb-4" style="max-width: 350px;">
+                        <img src="/assets/images/logo.png" alt="VRNT Logo" class="mb-4" style="max-width: 250px;">
+                        <h2 data-i18n="register.title">Create Account</h2>
+                        <p data-i18n="register.subtitle">Join our community and get started</p>
                     </div>
                     
                     <div class="register-body">
@@ -26,72 +44,63 @@
                             <div class="row g-3">
                                 <!-- Role Selection -->
                                 <div class="col-md-6">
-                                    <label for="role" class="form-label">Role *</label>
+                                    <label for="role" class="form-label" data-i18n="register.roleLabel">Role *</label>
                                     <select class="form-select" name="Role" id="role" required>
-                                        <option selected disabled value="">Select Role</option>
-                                        <option value="student">Student</option>
-                                        <option value="teacher">Teacher</option>
+                                        <option selected disabled value="" data-i18n="register.roleDefault">Select Role</option>
+                                        <option value="student" data-i18n="register.roleStudent">Student</option>
+                                        <option value="teacher" data-i18n="register.roleTeacher">Teacher</option>
                                     </select>
-                                    <div class="form-text">Select your role in the system</div>
+                                    <div class="form-text" data-i18n="register.roleHelp">Select your role in the system</div>
                                 </div>
                                 
                                 <!-- Username -->
                                 <div class="col-md-6">
-                                    <label for="uname" class="form-label">Username *</label>
+                                    <label for="uname" class="form-label" data-i18n="register.usernameLabel">Username *</label>
                                     <div class="input-group">
-                                        <span class="input-group-text">
-                                            <i class="bi bi-person-badge"></i>
-                                        </span>
-                                        <input type="text" class="form-control" name="username" id="uname" autocomplete="username" placeholder="Enter username" required>
+                                        <span class="input-group-text"><i class="bi bi-person-badge"></i></span>
+                                        <input type="text" class="form-control" name="username" id="uname" autocomplete="username" required
+                                               data-i18n-placeholder="register.usernamePlaceholder" placeholder="Enter username">
                                     </div>
-                                    <div class="form-text">Choose a unique username</div>
+                                    <div class="form-text" data-i18n="register.usernameHelp">Choose a unique username</div>
                                 </div>
                                 
                                 <!-- Full Name -->
                                 <div class="col-12">
-                                    <label for="fname" class="form-label">Full Name *</label>
+                                    <label for="fname" class="form-label" data-i18n="register.fullnameLabel">Full Name *</label>
                                     <div class="input-group">
-                                        <span class="input-group-text">
-                                            <i class="bi bi-person"></i>
-                                        </span>
-                                        <input type="text" class="form-control" name="fullname" id="fname" placeholder="Enter your full name" autocomplete="name" required>
+                                        <span class="input-group-text"><i class="bi bi-person"></i></span>
+                                        <input type="text" class="form-control" name="fullname" id="fname" autocomplete="name" required
+                                               data-i18n-placeholder="register.fullnamePlaceholder" placeholder="Enter your full name">
                                     </div>
                                 </div>
                                 
                                 <!-- Email -->
                                 <div class="col-12">
-                                    <label for="email" class="form-label">Email Address *</label>
+                                    <label for="email" class="form-label" data-i18n="register.emailLabel">Email Address *</label>
                                     <div class="input-group">
-                                        <span class="input-group-text">
-                                            <i class="bi bi-envelope"></i>
-                                        </span>
-                                        <input type="email" class="form-control" name="email_address" id="email" placeholder="Enter your email" autocomplete="email" required>
+                                        <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                                        <input type="email" class="form-control" name="email_address" id="email" autocomplete="email" required
+                                               data-i18n-placeholder="register.emailPlaceholder" placeholder="Enter your email">
                                     </div>
-                                    <div class="form-text">We'll never share your email with anyone else</div>
+                                    <div class="form-text" data-i18n="register.emailHelp">We'll never share your email with anyone else</div>
                                 </div>
                                 
                                 <!-- Gender -->
                                 <div class="col-12">
                                     <fieldset class="gender-fieldset">
-                                        <legend>Gender *</legend>
+                                        <legend data-i18n="register.genderLegend">Gender *</legend>
                                         <div class="gender-options">
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="gender" id="male" value="male" required>
-                                                <label class="form-check-label" for="male">
-                                                    <i class="bi bi-gender-male me-1"></i> Male
-                                                </label>
+                                                <label class="form-check-label" for="male" data-i18n="register.genderMale">Male</label>
                                             </div>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="gender" id="female" value="female">
-                                                <label class="form-check-label" for="female">
-                                                    <i class="bi bi-gender-female me-1"></i> Female
-                                                </label>
+                                                <label class="form-check-label" for="female" data-i18n="register.genderFemale">Female</label>
                                             </div>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="gender" id="other" value="other">
-                                                <label class="form-check-label" for="other">
-                                                    <i class="bi bi-gender-ambiguous me-1"></i> Other
-                                                </label>
+                                                <label class="form-check-label" for="other" data-i18n="register.genderOther">Other</label>
                                             </div>
                                         </div>
                                     </fieldset>
@@ -99,49 +108,43 @@
                                 
                                 <!-- Department -->
                                 <div class="col-12">
-                                    <label for="course" class="form-label">Department *</label>
+                                    <label for="course" class="form-label" data-i18n="register.deptLabel">Department *</label>
                                     <select class="form-select" name="Department" id="course" required>
-                                        <option disabled selected value="">Select Your Department</option>
-                                        <option value="be cse">B.E Computer Science & Engineering</option>
-                                        <option value="be ece">B.E Electronics & Communication Engineering</option>
-                                        <option value="bsc cs">B.Sc Computer Science</option>
-                                        <option value="bca">Bachelor of Computer Applications</option>
-                                        <option value="other">Other Department</option>
+                                        <option disabled selected value="" data-i18n="register.deptDefault">Select Your Department</option>
+                                        <option value="be cse" data-i18n="register.deptCSE">B.E Computer Science & Engineering</option>
+                                        <option value="be ece" data-i18n="register.deptECE">B.E Electronics & Communication Engineering</option>
+                                        <option value="bsc cs" data-i18n="register.deptCS">B.Sc Computer Science</option>
+                                        <option value="bca" data-i18n="register.deptBCA">Bachelor of Computer Applications</option>
+                                        <option value="other" data-i18n="register.deptOther">Other Department</option>
                                     </select>
                                 </div>
                                 
                                 <!-- Password -->
                                 <div class="col-md-6">
-                                    <label for="pwd" class="form-label">Password *</label>
+                                    <label for="pwd" class="form-label" data-i18n="register.passwordLabel">Password *</label>
                                     <div class="password-wrapper">
                                         <div class="input-group">
-                                            <span class="input-group-text">
-                                                <i class="bi bi-lock"></i>
-                                            </span>
-                                            <input type="password" class="form-control" name="password" id="pwd" autocomplete="new-password" placeholder="Create password" required minlength="6">
+                                            <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                                            <input type="password" class="form-control" name="password" id="pwd" autocomplete="new-password" required minlength="6"
+                                                   data-i18n-placeholder="register.passwordPlaceholder" placeholder="Create password">
                                         </div>
-                                        <button type="button" class="password-toggle" id="togglePassword1">
-                                            <i class="bi bi-eye"></i>
-                                        </button>
+                                        <button type="button" class="password-toggle" id="togglePassword1"><i class="bi bi-eye"></i></button>
                                     </div>
-                                    <div class="form-text">Minimum 6 characters</div>
+                                    <div class="form-text" data-i18n="register.passwordHelp">Minimum 6 characters</div>
                                 </div>
                                 
                                 <!-- Confirm Password -->
                                 <div class="col-md-6">
-                                    <label for="c-pwd" class="form-label">Confirm Password *</label>
+                                    <label for="c-pwd" class="form-label" data-i18n="register.confirmLabel">Confirm Password *</label>
                                     <div class="password-wrapper">
                                         <div class="input-group">
-                                            <span class="input-group-text">
-                                                <i class="bi bi-lock-fill"></i>
-                                            </span>
-                                            <input type="password" class="form-control" name="confirm_password" id="c-pwd" autocomplete="new-password" placeholder="Confirm password" required minlength="6">
+                                            <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
+                                            <input type="password" class="form-control" name="confirm_password" id="c-pwd" autocomplete="new-password" required minlength="6"
+                                                   data-i18n-placeholder="register.confirmPlaceholder" placeholder="Confirm password">
                                         </div>
-                                        <button type="button" class="password-toggle" id="togglePassword2">
-                                            <i class="bi bi-eye"></i>
-                                        </button>
+                                        <button type="button" class="password-toggle" id="togglePassword2"><i class="bi bi-eye"></i></button>
                                     </div>
-                                    <div class="form-text">Re-enter your password</div>
+                                    <div class="form-text" data-i18n="register.confirmHelp">Re-enter your password</div>
                                 </div>
                             </div>
                             
@@ -149,25 +152,31 @@
                             <div class="form-check terms-check">
                                 <input class="form-check-input" type="checkbox" id="terms" required>
                                 <label class="form-check-label" for="terms">
-                                    I agree to the <a href="#" class="text-decoration-none">Terms of Service</a> and <a href="#" class="text-decoration-none">Privacy Policy</a>
+                                    <span data-i18n="register.agreePrefix">I agree to the</span>
+                                    <a href="#" class="text-decoration-none" data-i18n="register.terms">Terms of Service</a>
+                                    <span data-i18n="register.and">and</span>
+                                    <a href="#" class="text-decoration-none" data-i18n="register.privacy">Privacy Policy</a>
                                 </label>
                             </div>
                             
                             <!-- Submit Button -->
                             <button type="submit" class="btn btn-primary btn-register">
-                                <i class="bi bi-person-plus me-2"></i> Create Account
+                                <i class="bi bi-person-plus me-2"></i> <span data-i18n="register.createBtn">Create Account</span>
                             </button>
                         </form>
                         
                         <div class="login-link">
-                            <p>Already Have an Account? <a href="index.html">Login Here</a></p>
+                            <p><span data-i18n="register.alreadyAccount">Already Have an Account?</span> <a href="index.html" data-i18n="register.loginHere">Login Here</a></p>
                         </div>
                     </div>
                 </div>
                 
                 <div class="text-center mt-4">
                     <p class="text-muted small">
-                        By creating an account, you agree to our <a href="#" class="text-decoration-none">Terms of Service</a> and <a href="#" class="text-decoration-none">Privacy Policy</a>
+                        <span data-i18n="register.agreePrefix">By creating an account, you agree to our</span>
+                        <a href="#" class="text-decoration-none" data-i18n="register.terms">Terms of Service</a>
+                        <span data-i18n="register.and">and</span>
+                        <a href="#" class="text-decoration-none" data-i18n="register.privacy">Privacy Policy</a>
                     </p>
                 </div>
             </div>
@@ -176,7 +185,9 @@
 
     <!-- Bootstrap JS Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    
+    <!-- Translation script (shared) -->
+    <script src="/assets/js/translator.js"></script>
+    <!-- Custom register JS -->
     <script src="/assets/js/register.js"></script>
 </body>
 </html>

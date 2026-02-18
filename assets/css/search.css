@@ -31,6 +31,9 @@ body {
     position: relative;
 }
 
+.lang-btn { min-width: 60px; font-weight: 500; border: 1px solid rgba(0,0,0,0.2); }
+.lang-btn.active { background-color: #4361ee; color: #000 !important; border-color: #4361ee; }
+
 .page-header h2 {
     margin: 0;
     font-weight: 700;
@@ -351,6 +354,11 @@ body {
 .logout-modal .modal-header {
     background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
     color: white;
+}
+
+.logout-btn{
+    color: #fff;
+    text-decoration: none;
 }
 
 .logout-modal .modal-title {

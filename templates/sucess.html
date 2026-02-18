@@ -8,17 +8,34 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-    <!-- Custom External CSS -->
-     <link rel="stylesheet" href="/assets/css/success.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/assets/css/success.css">
+    <style>
+       
+    </style>
 </head>
 <body>
     <div class="container">
+        <!-- Language selector row -->
+        <div class="row justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-6">
+                <div class="d-flex justify-content-end gap-1 mb-3">
+                    <button class="btn btn-sm btn-outline-secondary lang-btn" data-lang="en">English</button>
+                    <button class="btn btn-sm btn-outline-secondary lang-btn" data-lang="ta">தமிழ்</button>
+                    <button class="btn btn-sm btn-outline-secondary lang-btn" data-lang="te">తెలుగు</button>
+                    <button class="btn btn-sm btn-outline-secondary lang-btn" data-lang="hi">हिन्दी</button>
+                </div>
+            </div>
+        </div>
+
         <div class="row justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-6">
                 <div class="success-container">
                     <div class="success-header">
-                        <h2>Welcome Back!</h2>
-                        <p>You have successfully logged into your account</p>
+                        <img src="/assets/images/guru-banner.jpg" alt="Guru Image" class="img-fluid rounded mb-4" style="max-width: 350px; ;">
+                        <img src="/assets/images/logo.png" alt="VRNT Logo" class="img-fluid rounded mb-4" style="max-width: 250px;">
+                        <h2 data-i18n="success.title">Welcome Back!</h2>
+                        <p data-i18n="success.subtitle">You have successfully logged into your account</p>
                     </div>
                     
                     <div class="success-body">
@@ -29,18 +46,18 @@
                         </div>
                         
                         <div class="success-message">
-                            <h3>Login Successful!</h3>
-                            <p>You are now signed in to your account. What would you like to do next?</p>
+                            <h3 data-i18n="success.loginSuccess">Login Successful!</h3>
+                            <p data-i18n="success.nextPrompt">You are now signed in to your account. What would you like to do next?</p>
                         </div>
                         
                         <div class="next-options">
-                            <h4>Choose Your Next Step</h4>
+                            <h4 data-i18n="success.chooseStep">Choose Your Next Step</h4>
                             
                             <div class="option-card" onclick="window.location.href='dashboard.html'">
                                 <a href="dashboard.html">
                                     <div class="option-text">
-                                        <div class="option-title">Go to Dashboard</div>
-                                        <div class="option-description">Access your personal dashboard with all features</div>
+                                        <div class="option-title" data-i18n="success.dashboardTitle">Go to Dashboard</div>
+                                        <div class="option-description" data-i18n="success.dashboardDesc">Access your personal dashboard with all features</div>
                                     </div>
                                     <div class="option-icon">
                                         <i class="bi bi-speedometer2"></i>
@@ -51,8 +68,8 @@
                             <div class="option-card" onclick="window.location.href='search.html'">
                                 <a href="search.html">
                                     <div class="option-text">
-                                        <div class="option-title">Search Your Application</div>
-                                        <div class="option-description">Find and manage your applications</div>
+                                        <div class="option-title" data-i18n="success.searchTitle">Search Your Application</div>
+                                        <div class="option-description" data-i18n="success.searchDesc">Find and manage your applications</div>
                                     </div>
                                     <div class="option-icon">
                                         <i class="bi bi-search"></i>
@@ -63,8 +80,8 @@
                             <div class="option-card" onclick="window.location.href='register.html'">
                                 <a href="register.html">
                                     <div class="option-text">
-                                        <div class="option-title">Register a New Account</div>
-                                        <div class="option-description">Create an account for another user</div>
+                                        <div class="option-title" data-i18n="success.registerTitle">Register a New Account</div>
+                                        <div class="option-description" data-i18n="success.registerDesc">Create an account for another user</div>
                                     </div>
                                     <div class="option-icon">
                                         <i class="bi bi-person-plus"></i>
@@ -74,20 +91,20 @@
                         </div>
                         
                         <div class="divider">
-                            <span>Or</span>
+                            <span data-i18n="success.or">Or</span>
                         </div>
                         
                         <div class="text-center">
-                            <p class="text-muted mb-3">Quick Navigation</p>
+                            <p class="text-muted mb-3" data-i18n="success.quickNav">Quick Navigation</p>
                             <div class="quick-actions">
                                 <button class="btn-quick" onclick="window.location.href='index.html'">
-                                    <i class="bi bi-box-arrow-left me-1"></i> Back to Login
+                                    <i class="bi bi-box-arrow-left me-1"></i> <span data-i18n="success.backToLogin">Back to Login</span>
                                 </button>
                                 <button class="btn-quick" onclick="window.location.href='profile.html'">
-                                    <i class="bi bi-person-circle me-1"></i> View Profile
+                                    <i class="bi bi-person-circle me-1"></i> <span data-i18n="success.viewProfile">View Profile</span>
                                 </button>
                                 <button class="btn-quick" onclick="window.location.href='settings.html'">
-                                    <i class="bi bi-gear me-1"></i> Settings
+                                    <i class="bi bi-gear me-1"></i> <span data-i18n="success.settings">Settings</span>
                                 </button>
                             </div>
                         </div>
@@ -96,7 +113,8 @@
                 
                 <div class="text-center mt-4">
                     <p class="text-muted small">
-                        Session will expire in 30 minutes for security. <a href="#" class="text-decoration-none" onclick="extendSession()">Extend session</a>
+                        <span data-i18n="success.sessionExpire">Session will expire in 30 minutes for security.</span>
+                        <a href="#" class="text-decoration-none" onclick="extendSession()" data-i18n="success.extendSession">Extend session</a>
                     </p>
                 </div>
             </div>
@@ -105,7 +123,9 @@
 
     <!-- Bootstrap JS Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    
+    <!-- Translation script (shared) -->
+    <script src="/assets/js/translator.js"></script>
+    <!-- Custom success JS -->
     <script src="/assets/js/success.js"></script>
 </body>
 </html>

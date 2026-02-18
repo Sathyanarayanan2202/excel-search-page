@@ -16,6 +16,8 @@ body {
     font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
     padding: 20px;
 }
+ .lang-btn { min-width: 60px; font-weight: 500; border: 1px solid rgba(0,0,0,0.2); }
+.lang-btn.active { background-color: #2ecc71; color: #000 !important; border-color: #2ecc71; }
 
 .success-container {
     background: white;
